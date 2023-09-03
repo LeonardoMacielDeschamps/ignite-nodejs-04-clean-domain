@@ -1,4 +1,4 @@
-# DDD (Domain-drive Design)
+# DDD (Domain-Driven Design)
 
 Design dirigido à domínio
 
