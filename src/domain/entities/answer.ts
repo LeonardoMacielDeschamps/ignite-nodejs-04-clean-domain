@@ -23,6 +23,11 @@ export class Answer extends Entity<AnswerProps> {
     return this.props.content
   }
 
+  set content(content: string) {
+    this.props.content = content
+    this.touch()
+  }
+
   get createdAt() {
     return this.props.createdAt
   }
@@ -32,29 +37,24 @@ export class Answer extends Entity<AnswerProps> {
   }
 
   get excerpt() {
-    return this.content
-      .substring(0, 120)
-      .trimEnd()
-      .concat('...')
+    return this.content.substring(0, 120).trimEnd().concat('...')
   }
 
   private touch() {
     this.props.updatedAt = new Date()
   }
 
-  set content(content: string) {
-    this.props.content = content
-    this.touch()
-  }
-
   static create(
     props: Optional<AnswerProps, 'createdAt'>,
-    id?: UniqueEntityId
+    id?: UniqueEntityId,
   ) {
-    const answer = new Answer({
-      ...props,
-      createdAt: new Date()
-    }, id)
+    const answer = new Answer(
+      {
+        ...props,
+        createdAt: new Date(),
+      },
+      id,
+    )
 
     return answer
   }
