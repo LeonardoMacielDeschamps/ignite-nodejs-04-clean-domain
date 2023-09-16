@@ -7,7 +7,6 @@ let sut: CreateNotificationUseCase
 describe('Create Notification', () => {
   beforeEach(() => {
     inMemoryNotificationsRepository = new InMemoryNotificationsRepository()
-
     sut = new CreateNotificationUseCase(inMemoryNotificationsRepository)
   })
 
